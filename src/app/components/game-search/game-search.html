@@ -1,0 +1,17 @@
+<div class="search-container">
+  <input [(ngModel)]="searchQuery" placeholder="Procure um jogo..." (keyup.enter)="onSearch()"/>
+  <button (click)="onSearch()">Buscar</button>
+</div>
+
+<ul class="results-grid">
+  <li *ngFor="let game of results" class="game-card">
+    <a [routerLink]="['/game', game.slug]">
+      <img *ngIf="game.background_image" [src]="game.background_image" alt="{{ game.name }}" loading="lazy">
+      <div class="game-info">
+        <h3>{{ game.name }}</h3>
+        <p><span class="label">Lançamento:</span> {{ game.released | date: 'dd/MM/yyyy' }}</p>
+        <p *ngIf="game.metacritic"><span class="label">Metacritic:</span> <span class="meta">{{ game.metacritic }}</span></p>
+      </div>
+    </a>
+  </li>
+</ul>

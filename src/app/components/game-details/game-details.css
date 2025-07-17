@@ -1,0 +1,78 @@
+/* Estilos da Página de Detalhes */
+.details-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #2a2a2a;
+  border-radius: 8px;
+}
+
+.back-button {
+  display: inline-block;
+  margin-bottom: 2rem;
+  color: #8a91ff;
+  text-decoration: none;
+}
+
+.back-button:hover {
+  color: #646cff;
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+.game-image {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.description {
+  line-height: 1.6;
+  color: #ccc;
+}
+
+.info-box {
+  background-color: #3a3a3a;
+  border-radius: 6px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.info-box h3 {
+  margin-top: 0;
+  border-bottom: 1px solid #555;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.ratings .rating-bar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.ratings .bar {
+  background-color: #555;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.ratings .fill {
+  background-color: #646cff;
+  height: 10px;
+}
+
+.requirements div {
+  margin-bottom: 1rem;
+}
+
+.requirements h4 {
+  color: #ccc;
+  margin-bottom: 0.5rem;
+}

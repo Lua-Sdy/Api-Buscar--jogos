@@ -1,0 +1,39 @@
+<div *ngIf="game$ | async as game" class="details-container">
+  <a routerLink="/" class="back-button">&larr; Voltar para a busca</a>
+  
+  <h1>{{ game.name }}</h1>
+  
+  <div class="main-content">
+    <div class="left-column">
+      <img [src]="game.background_image" alt="{{ game.name }}" class="game-image">
+      <p class="description">{{ game.description_raw }}</p>
+    </div>
+    
+    <div class="right-column">
+      <div class="info-box">
+        <h3>Detalhes</h3>
+        <p><strong>Lançamento:</strong> {{ game.released | date: 'dd/MM/yyyy' }}</p>
+        <p><strong>Website:</strong> <a [href]="game.website" target="_blank">{{ game.website }}</a></p>
+        <p><strong>Publisher:</strong> {{ game.publishers[0]?.name }}</p>
+        <p *ngIf="game.metacritic"><strong>Metacritic:</strong> <span class="meta">{{ game.metacritic }}</span></p>
+      </div>
+
+      <div class="info-box ratings">
+        <h3>Avaliações</h3>
+        <div *ngFor="let rating of game.ratings" class="rating-bar">
+          <span>{{ rating.title | titlecase }}</span>
+          <div class="bar">
+            <div class="fill" [style.width.%]="rating.percent"></div>
+          </div>
+          <span>{{ rating.percent }}% ({{ rating.count }})</span>
+        </div>
+      </div>
+
+      <div class="info-box requirements" *ngIf="getPCRequirements(game) as reqs">
+        <h3>Requisitos (PC)</h3>
+        <div [innerHTML]="reqs.minimum"></div>
+        <div [innerHTML]="reqs.recommended"></div>
+      </div>
+    </div>
+  </div>
+</div>
