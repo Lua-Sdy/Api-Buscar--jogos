@@ -1,0 +1,26 @@
+#gameCarousel {
+  max-height: 400px;
+  overflow: hidden;
+  background-color: #000; /* Fundo preto para preencher espacos vazios */
+}
+
+.carousel-inner .carousel-item {
+    height: 400px; /* Força a altura do item do carrossel */
+}
+
+.carousel-inner .carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Garante que a imagem inteira apareça, sem cortes */
+  object-position: center; /* Centraliza a imagem */
+}
+
+.carousel-caption {
+  position: absolute;
+  bottom: 1.25rem;
+  right: 15%;
+  left: 15%;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px;
+  border-radius: 5px;
+}

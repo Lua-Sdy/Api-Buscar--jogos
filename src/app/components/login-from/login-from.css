@@ -1,0 +1,136 @@
+/* Estilo global */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  overflow: hidden; /* Evita rolagem vertical */
+}
+
+/* Imagem de fundo */
+.img-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Coloca a imagem no fundo */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.img-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajusta a imagem para cobrir toda a área */
+}
+
+/* Container principal */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: white;
+}
+
+/* Logo */
+.logo {
+  max-width: 300px; /* Tamanho máximo do logo */
+  margin-left: 15%;
+}
+
+/* Formulário de login */
+.direita {
+  width: 40%; /* Largura do formulário */
+  padding: 50px 30px; /* Espaçamento interno */
+  background-color: rgba(0, 0, 0, 0.6); /* Fundo preto translúcido */
+  border-radius: 10px; /* Borda arredondada */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Sombra suave */
+}
+
+.boas-vindas {
+  font-size: 40px;
+  color: #d197fc; /* Cor roxa mais vibrante */
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+/* Estilo dos campos de entrada */
+.input-group {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.input-group .icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 18px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 40px 12px 40px;
+  border-radius: 5px; /* Arredonda os inputs */
+  font-size: 16px;
+  outline: none;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+}
+
+.input-group .icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 18px;
+  pointer-events: none; /* Evita que o ícone atrapalhe o clique no input */
+}
+
+.input-group input:focus {
+  border-color: #6f00ff; /* Azul da Ford */
+  box-shadow: 0 0 5px rgba(111, 0, 255, 0.3);
+}
+
+/* Placeholder estilizado */
+.input-group input::placeholder {
+  color: #999;
+}
+
+/* Botão de login */
+.btn-login {
+  width: 100%;
+  padding: 12px;
+  background-color: #6f00ff; /* Azul da Ford */
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.btn-login:hover {
+  background-color: #5b00e0; /* Gradiente azul escuro */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .direita {
+    width: 80%; /* Aumenta a largura em telas menores */
+  }
+  .logo{
+    width: 60%;
+  }
+ 
+
+}

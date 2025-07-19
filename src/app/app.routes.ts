@@ -1,15 +1,19 @@
 import { Routes } from '@angular/router';
-import { GameSearchComponent } from './components/game-search/game-search';
 import { GameDetailsComponent } from './components/game-details/game-details';
 import { Login } from './pages/login/login';
 import { Home } from './pages/home/home';
-import { GameSearch } from './pages/game-search/game-search';
 import { Cadastros } from './pages/cadastros/cadastros';
+import { HomeLogado } from './pages/home-logado/home-logado';
 
 export const routes: Routes = [
     
     {
         path:"",
+        pathMatch: 'full',
+        loadComponent: () => import('./pages/home/home').then(c => Home)
+    },
+    {
+        path:"login",
         pathMatch: 'full',
         loadComponent: () => import('./pages/login/login').then(c => Login )
     },
@@ -19,13 +23,12 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/cadastros/cadastros').then(c => Cadastros) 
     },
      {
-        path:"home",
+        path:"home-logado",
         pathMatch: 'full',
-        loadComponent: () => import('./pages/home/home').then(c => Home)
+        loadComponent: () => import('./pages/home-logado/home-logado').then(c => HomeLogado )
     },
-     {
-        path:"game-search",
-        pathMatch: 'full',
-        loadComponent: () => import('./pages/game-search/game-search').then(c => GameSearch )
+    {
+        path: 'game-details/:slug',
+        loadComponent: () => import('./components/game-details/game-details').then(c => GameDetailsComponent)
     }
 ];

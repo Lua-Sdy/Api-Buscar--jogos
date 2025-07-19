@@ -1,6 +1,4 @@
 /* Estilos da Página de Detalhes */
-
-
 .details-container {
   max-width: 1200px;
   margin: 2rem auto;
@@ -14,10 +12,13 @@
   margin-bottom: 2rem;
   color: #8a91ff;
   text-decoration: none;
+  background: none;
+  border: none;
 }
 
 .back-button:hover {
   color: #646cff;
+  opacity: 0.7;
 }
 
 .main-content {

@@ -1,5 +1,5 @@
 <div *ngIf="game$ | async as game" class="details-container">
-  <a routerLink="/" class="back-button">&larr; Voltar para a busca</a>
+  <button (click)="onTogames()" class="back-button">&larr; Voltar para a Home</button>
   
   <h1>{{ game.name }}</h1>
   

@@ -1,6 +1,6 @@
 
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Component, inject, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RawgService } from '../../service/rawg';
 import { Observable } from 'rxjs';
@@ -8,12 +8,17 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-game-details',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule],
   templateUrl: './game-details.html',
   styleUrls: ['./game-details.css']
 })
 export class GameDetailsComponent implements OnInit {
   game$: Observable<any> | undefined;
+ router = inject(Router);
+
+  onTogames(){
+    this.router.navigate(['/home-logado'])
+  }
 
   constructor(
     private route: ActivatedRoute,

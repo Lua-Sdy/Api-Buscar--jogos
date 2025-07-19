@@ -1,0 +1,24 @@
+<div class="img-bg">
+  <img src="../assets/img/003.png" alt="Background Image">
+</div>
+<div class="container">
+  <div class="direita">
+    <img src="../assets/img/logoNemor.png" alt="Logo" class="logo">
+    <h1 class="boas-vindas">Login</h1>
+    <form class="form-login">
+      <!-- Campo Usuário com ícone -->
+      <div class="input-group">
+        <span class="icon"><i class="fas fa-user"></i></span>
+        <input formControlName="nome" type="text" id="usuario" placeholder="Usuário" required>
+      </div>
+
+      <!-- Campo Senha com ícone -->
+      <div class="input-group">
+        <span class="icon"><i class="fas fa-lock"></i></span>
+        <input formControlName="senha" type="password" id="senha" placeholder="Senha" required>
+      </div>
+
+      <button type="submit" class="btn-login" (click)="onTogames()">Entrar</button>
+    </form>
+  </div>
+</div>

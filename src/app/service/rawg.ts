@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,8 +11,17 @@ export class RawgService {
 
   constructor(private http: HttpClient) {}
 
-  searchGames(query: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/games?key=${this.apiKey}&search=${query}`);
+  searchGames(query: string, ordering: string = '', page: number = 1): Observable<any> {
+    let params = new HttpParams()
+      .set('key', this.apiKey)
+      .set('search', query)
+      .set('page', page.toString());
+
+    if (ordering) {
+      params = params.set('ordering', ordering);
+    }
+
+    return this.http.get(`${this.apiUrl}/games`, { params });
   }
 
   getGameDetails(slug: string): Observable<any> {

@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RawgService } from '../../service/rawg';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router'; // ✅ Adicionado
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-game-search',
   templateUrl: './game-search.html',
   styleUrls: ['./game-search.css'],
-  imports: [FormsModule, CommonModule, RouterLink], // ✅ Adicionado
+  imports: [FormsModule, CommonModule, RouterLink],
   standalone: true
 })
 export class GameSearchComponent {

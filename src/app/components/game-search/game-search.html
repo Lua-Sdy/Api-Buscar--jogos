@@ -8,7 +8,7 @@
 
 <ul class="results-grid">
   <li *ngFor="let game of results" class="game-card">
-    <a [routerLink]="['/game', game.slug]">
+    <a [routerLink]="['/game-details', game.slug]">
       <img *ngIf="game.background_image" [src]="game.background_image" alt="{{ game.name }}" loading="lazy">
       <div class="game-info">
         <h3>{{ game.name }}</h3>
