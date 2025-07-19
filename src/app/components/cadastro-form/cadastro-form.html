@@ -5,33 +5,39 @@
   <h2 class="mb-4">Cadrastre de usurário</h2>
 
   <!-- Formulário de cadastro -->
-  <form>
+  <form (ngSubmit)="onSubmit()">
     <!-- Nome -->
     <div class="mb-3">
       <label for="nome" class="form-label">Nome completo</label>
-      <input type="text" class="form-control" id="nome" placeholder="Digite seu nome" required>
+      <input type="text" class="form-control" id="nome" placeholder="Digite seu nome" required [(ngModel)]="nome" name="nome">
     </div>
 
     <!-- Email -->
     <div class="mb-3">
       <label for="email" class="form-label">Endereço de email</label>
-      <input type="email" class="form-control" id="email" placeholder="seuemail@example.com" required>
+      <input type="email" class="form-control" id="email" placeholder="seuemail@example.com" required [(ngModel)]="email" name="email">
     </div>
 
     <!-- Senha -->
     <div class="mb-3">
       <label for="senha" class="form-label">Senha</label>
-      <input type="password" class="form-control" id="senha" placeholder="Digite sua senha" required>
+      <input type="password" class="form-control" id="senha" placeholder="Digite sua senha" required [(ngModel)]="senha" name="senha">
     </div>
 
     <!-- Confirmação de senha -->
     <div class="mb-3">
       <label for="confirmarSenha" class="form-label">Confirme sua senha</label>
-      <input type="password" class="form-control" id="confirmarSenha" placeholder="Digite a senha novamente" required>
+      <input type="password" class="form-control" id="confirmarSenha" placeholder="Digite a senha novamente" required [(ngModel)]="confirmarSenha" name="confirmarSenha">
     </div>
 
 
+    <!-- Checkbox de aceite -->
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="aceite" (change)="onAceiteChange($event)">
+      <label class="form-check-label" for="aceite">Eu li e aceito a <a href="javascript:void(0)" (click)="verLGPD()">política de privacidade</a></label>
+    </div>
+
     <!-- Botão de envio -->
-    <button type="submit" class="btn btn-primary">Cadastrar</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!aceito">Cadastrar</button>
   </form>
 </div>

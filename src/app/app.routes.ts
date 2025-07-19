@@ -4,6 +4,8 @@ import { Login } from './pages/login/login';
 import { Home } from './pages/home/home';
 import { Cadastros } from './pages/cadastros/cadastros';
 import { HomeLogado } from './pages/home-logado/home-logado';
+import { Lgpd } from './pages/lgpd/lgpd';
+import { loginGuardGuard } from './guards/login-guard-guard';
 
 export const routes: Routes = [
     
@@ -25,10 +27,16 @@ export const routes: Routes = [
      {
         path:"home-logado",
         pathMatch: 'full',
-        loadComponent: () => import('./pages/home-logado/home-logado').then(c => HomeLogado )
+        loadComponent: () => import('./pages/home-logado/home-logado').then(c => HomeLogado ),
+        canActivate: [loginGuardGuard] // Proteger esta rota
     },
     {
         path: 'game-details/:slug',
-        loadComponent: () => import('./components/game-details/game-details').then(c => GameDetailsComponent)
+        loadComponent: () => import('./components/game-details/game-details').then(c => GameDetailsComponent),
+        canActivate: [loginGuardGuard] // Proteger esta rota
+    },
+    {
+        path: 'lgpd',
+        loadComponent: () => import('./pages/lgpd/lgpd').then(c => Lgpd)
     }
 ];

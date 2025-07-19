@@ -1,4 +1,12 @@
 {
+  "/backend/api/auth": {
+    "target": "http://localhost:3005",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/backend": ""
+    }
+  },
   "/api": {
     "target": "https://api.rawg.io ",
     "secure": false,
