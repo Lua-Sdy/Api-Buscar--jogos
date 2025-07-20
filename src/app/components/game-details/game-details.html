@@ -1,26 +1,105 @@
-<div *ngIf="game$ | async as game" class="details-container">
+<!-- Mostra o conteúdo apenas se os dados do jogo estiverem carregados -->
+<div *ngIf="gameDetails$ | async as gameDetails" class="details-container">
+
+  <!-- Botão para voltar para a página inicial -->
   <button (click)="onTogames()" class="back-button">&larr; Voltar para a Home</button>
-  
-  <h1>{{ game.name }}</h1>
-  
+
+  <!-- Título do jogo -->
+  <h1>{{ gameDetails.name }}</h1>
+
+  <!-- Conteúdo principal -->
   <div class="main-content">
-    <div class="left-column">
-      <img [src]="game.background_image" alt="{{ game.name }}" class="game-image">
-      <p class="description">{{ game.description_raw }}</p>
-    </div>
     
-    <div class="right-column">
-      <div class="info-box">
-        <h3>Detalhes</h3>
-        <p><strong>Lançamento:</strong> {{ game.released | date: 'dd/MM/yyyy' }}</p>
-        <p><strong>Website:</strong> <a [href]="game.website" target="_blank">{{ game.website }}</a></p>
-        <p><strong>Publisher:</strong> {{ game.publishers[0]?.name }}</p>
-        <p *ngIf="game.metacritic"><strong>Metacritic:</strong> <span class="meta">{{ game.metacritic }}</span></p>
+    <!-- Coluna da esquerda -->
+    <div class="left-column">
+
+      <!-- Imagem do jogo -->
+      <img [src]="gameDetails.background_image" alt="{{ gameDetails.name }}" class="game-image">
+
+      <!-- Seção de mídia (vídeos e screenshots) -->
+      <div class="media-section" *ngIf="gameDetails.movies && gameDetails.movies.length > 0 || gameDetails.short_screenshots && gameDetails.short_screenshots.length > 0">
+        <h3>Mídia</h3>
+        <!-- Vídeo do jogo -->
+        <div *ngIf="gameDetails.movies[0]" class="video-container">
+          <video controls [src]="gameDetails.movies[0].data.max" [poster]="gameDetails.movies[0].preview"></video>
+        </div>
+
+        <!-- Galeria de screenshots -->
+        <div class="screenshots-grid">
+          <img *ngFor="let screenshot of gameDetails.short_screenshots" [src]="screenshot.image" alt="Screenshot" loading="lazy">
+        </div>
       </div>
 
+      <!-- Descrição do jogo -->
+      <h3>Descrição</h3>
+      <p class="description">{{ gameDetails.description_raw }}</p>
+
+      <!-- Outros jogos da série -->
+      <div class="section-box" *ngIf="gameDetails.series && gameDetails.series.length > 0">
+        <h3>Outros Jogos da Série</h3>
+        <div class="series-grid">
+          <a *ngFor="let game of gameDetails.series" [routerLink]="['/game-details', game.slug]" class="series-card">
+            <img [src]="game.background_image" alt="{{ game.name }}" loading="lazy">
+            <span>{{ game.name }}</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Coluna da direita -->
+    <div class="right-column">
+
+      <!-- Plataformas -->
+      <div class="info-box">
+        <h3>Plataformas</h3>
+        <div class="tags-container">
+          <span *ngFor="let p of gameDetails.platforms" class="tag platform-tag">
+            <fa-icon [icon]="getPlatformIcon(p.platform.slug)"></fa-icon> {{ p.platform.name }}
+          </span>
+        </div>
+      </div>
+
+      <!-- Onde comprar -->
+      <div class="info-box" *ngIf="gameDetails.stores && gameDetails.stores.length > 0">
+        <h3>Onde Comprar</h3>
+        <div class="stores-list">
+          <!-- Acesso corrigido: store.name em vez de store.store.name -->
+          <a *ngFor="let store of gameDetails.stores" [href]="store.url" target="_blank" class="store-link">{{ store.store.name }}</a>
+        </div>
+      </div>
+
+      <!-- Detalhes do jogo -->
+      <div class="info-box">
+        <h3>Detalhes</h3>
+        <p><strong>Lançamento:</strong> {{ gameDetails.released | date: 'dd/MM/yyyy' }}</p>
+        <p><strong>Website:</strong> <a [href]="gameDetails.website" target="_blank">{{ gameDetails.website }}</a></p>
+        <p *ngIf="gameDetails.publishers && gameDetails.publishers[0]">
+          <strong>Publisher:</strong> {{ gameDetails.publishers[0].name }}
+        </p>
+        <p *ngIf="gameDetails.metacritic"><strong>Metacritic:</strong> <span class="meta">{{ gameDetails.metacritic }}</span></p>
+      </div>
+
+      <!-- Gêneros -->
+      <div class="info-box">
+        <h3>Gêneros</h3>
+        <div class="tags-container">
+          <span *ngFor="let genre of gameDetails.genres" class="tag">{{ genre.name }}</span>
+        </div>
+      </div>
+
+      <!-- Tags -->
+      <div class="info-box">
+        <h3>Tags</h3>
+        <div class="tags-container">
+          <span *ngFor="let tag of gameDetails.tags" class="tag">{{ tag.name }}</span>
+        </div>
+      </div>
+
+      <!-- Avaliações -->
       <div class="info-box ratings">
         <h3>Avaliações</h3>
-        <div *ngFor="let rating of game.ratings" class="rating-bar">
+        <div *ngFor="let rating of gameDetails.ratings" class="rating-bar">
           <span>{{ rating.title | titlecase }}</span>
           <div class="bar">
             <div class="fill" [style.width.%]="rating.percent"></div>
@@ -29,11 +108,13 @@
         </div>
       </div>
 
-      <div class="info-box requirements" *ngIf="getPCRequirements(game) as reqs">
+      <!-- Requisitos mínimos e recomendados para PC -->
+      <div class="info-box requirements" *ngIf="getPCRequirements(gameDetails) as reqs">
         <h3>Requisitos (PC)</h3>
         <div [innerHTML]="reqs.minimum"></div>
         <div [innerHTML]="reqs.recommended"></div>
       </div>
+
     </div>
   </div>
 </div>

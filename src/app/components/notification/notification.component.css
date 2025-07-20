@@ -1,0 +1,29 @@
+.notification-box {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 20px;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  z-index: 10000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0.95;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.notification-box.success {
+  background-color: #4CAF50; /* Green */
+}
+
+.notification-box.error {
+  background-color: #f44336; /* Red */
+}
+
+.notification-box.info {
+  background-color: #2196F3; /* Blue */
+}
+
+.notification-box.warning {
+  background-color: #ff9800; /* Orange */
+}

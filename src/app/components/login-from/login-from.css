@@ -1,136 +1,98 @@
-/* Estilo global */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Arial', sans-serif;
-  overflow: hidden; /* Evita rolagem vertical */
+.signup-link {
+  text-align: center;
+  margin-top: 1rem;
 }
 
-/* Imagem de fundo */
+.signup-link p {
+  color: #ccc;
+}
+
+.signup-link a {
+  color: #646cff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
+
+/* Estilos existentes */
 .img-bg {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Coloca a imagem no fundo */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  z-index: -1;
 }
 
 .img-bg img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ajusta a imagem para cobrir toda a área */
+  object-fit: cover;
 }
 
-/* Container principal */
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  color: white;
 }
 
-/* Logo */
-.logo {
-  max-width: 300px; /* Tamanho máximo do logo */
-  margin-left: 15%;
-}
-
-/* Formulário de login */
 .direita {
-  width: 40%; /* Largura do formulário */
-  padding: 50px 30px; /* Espaçamento interno */
-  background-color: rgba(0, 0, 0, 0.6); /* Fundo preto translúcido */
-  border-radius: 10px; /* Borda arredondada */
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Sombra suave */
+  background-color: rgba(42, 42, 42, 0.9);
+  padding: 2rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.logo {
+  width: 150px;
+  margin-bottom: 1rem;
 }
 
 .boas-vindas {
-  font-size: 40px;
-  color: #d197fc; /* Cor roxa mais vibrante */
-  text-align: center;
-  margin-bottom: 30px;
-  letter-spacing: 1px;
-  font-weight: bold;
+  color: #fff;
+  margin-bottom: 1.5rem;
 }
 
-/* Estilo dos campos de entrada */
 .input-group {
   position: relative;
-  width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
 }
 
 .input-group .icon {
   position: absolute;
-  left: 15px;
+  left: 10px;
   top: 50%;
   transform: translateY(-50%);
-  color: #999;
-  font-size: 18px;
+  color: #888;
 }
 
 .input-group input {
   width: 100%;
-  padding: 12px 40px 12px 40px;
-  border-radius: 5px; /* Arredonda os inputs */
-  font-size: 16px;
-  outline: none;
-  border: 1px solid #ccc;
-  transition: all 0.3s ease;
+  padding: 0.8rem 0.8rem 0.8rem 2.5rem; /* Espaço para o ícone */
+  border: 1px solid #444;
+  border-radius: 6px;
+  background-color: #3a3a3a;
+  color: #f0f0f0;
 }
 
-.input-group .icon {
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #999;
-  font-size: 18px;
-  pointer-events: none; /* Evita que o ícone atrapalhe o clique no input */
-}
-
-.input-group input:focus {
-  border-color: #6f00ff; /* Azul da Ford */
-  box-shadow: 0 0 5px rgba(111, 0, 255, 0.3);
-}
-
-/* Placeholder estilizado */
-.input-group input::placeholder {
-  color: #999;
-}
-
-/* Botão de login */
 .btn-login {
   width: 100%;
-  padding: 12px;
-  background-color: #6f00ff; /* Azul da Ford */
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
+  padding: 0.8rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
+  background-color: #646cff;
+  color: white;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 10px;
+  transition: background-color 0.3s;
 }
 
 .btn-login:hover {
-  background-color: #5b00e0; /* Gradiente azul escuro */
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-  .direita {
-    width: 80%; /* Aumenta a largura em telas menores */
-  }
-  .logo{
-    width: 60%;
-  }
- 
-
+  background-color: #535bf2;
 }

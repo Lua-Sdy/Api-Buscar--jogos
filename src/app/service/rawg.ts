@@ -27,4 +27,16 @@ export class RawgService {
   getGameDetails(slug: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/games/${slug}?key=${this.apiKey}`);
   }
+
+  getGameMovies(slug: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/games/${slug}/movies?key=${this.apiKey}`);
+  }
+
+  getGameStores(slug: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/games/${slug}/stores?key=${this.apiKey}`);
+  }
+
+  getGameSeries(slug: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/games/${slug}/game-series?key=${this.apiKey}`);
+  }
 }

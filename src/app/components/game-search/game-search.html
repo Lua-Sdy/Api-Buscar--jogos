@@ -2,11 +2,22 @@
   <img src="../assets/img/001.jpg" alt="">
 </div>
 <div class="search-container">
-  <input [(ngModel)]="searchQuery" placeholder="Procure um jogo..." (keyup.enter)="onSearch()"/>
-  <button (click)="onSearch()">Buscar</button>
+  <input 
+    [(ngModel)]="searchQuery" 
+    (ngModelChange)="onSearchChange()"
+    placeholder="Procure um jogo..."
+  />
 </div>
 
-<ul class="results-grid">
+<div *ngIf="isLoading" class="loading-indicator">
+  <p>Buscando...</p>
+</div>
+
+<div *ngIf="showNoResults && !isLoading" class="no-results">
+  <p>Nenhum jogo encontrado para "{{ searchQuery }}"</p>
+</div>
+
+<ul class="results-grid" *ngIf="!isLoading">
   <li *ngFor="let game of results" class="game-card">
     <a [routerLink]="['/game-details', game.slug]">
       <img *ngIf="game.background_image" [src]="game.background_image" alt="{{ game.name }}" loading="lazy">

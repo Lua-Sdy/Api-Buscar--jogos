@@ -1,16 +1,26 @@
 <nav class="custom-navbar">
   <div class="custom-container">
-    <a class="custom-navbar-brand" href="../../pages/home-logado/home-logado.html">
+    <a class="custom-navbar-brand" href="/">
       <img src="../assets/img/logoNemor.png" alt="SdyGames" width="100" height="50">
     </a>
 
-    <ul class="custom-nav">
+    <!-- Links para usuários não logados -->
+    <ul class="custom-nav" *ngIf="!isLoggedIn">
       <li class="custom-nav-item">
-        <a class="custom-nav-link active" href="../../pages/home-logado/home-logado.html">Home</a>
+        <button class="custom-nav-link active" (click)="onTologin()">Login</button>
       </li>
-      
       <li class="custom-nav-item">
-        <a class="custom-nav-link" href="#">Sair</a>
+        <button class="custom-nav-link active" (click)="onTocadastro()">Cadastrar</button>
+      </li>
+    </ul>
+
+    <!-- Menu para usuários logados -->
+    <ul class="custom-nav" *ngIf="isLoggedIn">
+      <li class="custom-nav-item user-menu">
+        <a class="custom-nav-link active">Olá, {{ username }}</a>
+        <div class="dropdown-menu">
+          <a (click)="logout()">Sair</a>
+        </div>
       </li>
     </ul>
   </div>

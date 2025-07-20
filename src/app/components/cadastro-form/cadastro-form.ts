@@ -1,64 +1,72 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms'; // Importar FormsModule
-import { AuthService } from '../../service/auth'; // Importar AuthService
+import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../service/auth';
+import { CommonModule } from '@angular/common';
+import { NotificationService } from '../../service/notification.service';
 
 @Component({
   selector: 'app-cadastro-form',
   standalone: true,
-  imports: [CommonModule, FormsModule], // Adicionar FormsModule
+  imports: [FormsModule, CommonModule],
   templateUrl: './cadastro-form.html',
-  styleUrls: ['./cadastro-form.css']
+  styleUrl: './cadastro-form.css'
 })
-export class CadastroFormComponent {
-  aceito = false;
+export class CadastroForm {
+  router = inject(Router);
+  authService = inject(AuthService);
+  notificationService = inject(NotificationService);
+
   nome: string = '';
   email: string = '';
   senha: string = '';
   confirmarSenha: string = '';
+  aceito: boolean = false; // Adicionado para o checkbox LGPD
 
-  constructor(private router: Router, private authService: AuthService) {}
-
-  onAceiteChange(event: any) {
-    this.aceito = event.target.checked;
-  }
-
-  verLGPD() {
-    this.router.navigate(['/lgpd']);
-  }
-
-  async onSubmit() {
-
+  onSubmit() {
     if (!this.nome || !this.email || !this.senha || !this.confirmarSenha) {
-    alert('Por favor, preencha todos os campos.');
-    return;
-  }
-
-  if (this.senha.length < 8) {
-    alert('A senha deve ter pelo menos 8 caracteres.');
-    return;
-  }
-    if (this.senha !== this.confirmarSenha) {
-      alert('As senhas não coincidem!');
+      this.notificationService.warning('Por favor, preencha todos os campos.');
+      console.warn('Cadastro: Campos obrigatórios não preenchidos.');
       return;
     }
 
-    const userData = {
-      nome: this.nome,
-      email: this.email,
-      senha: this.senha
-    };
+    if (this.senha.length < 8) {
+      this.notificationService.warning('A senha deve ter pelo menos 8 caracteres.');
+      console.warn('Cadastro: Senha muito curta.');
+      return;
+    }
 
-    this.authService.register(userData).subscribe({
+    if (this.senha !== this.confirmarSenha) {
+      this.notificationService.error('As senhas não coincidem!');
+      console.error('Cadastro: Senhas não coincidem.');
+      return;
+    }
+
+    if (!this.aceito) {
+      this.notificationService.warning('Você deve aceitar a política de privacidade.');
+      console.warn('Cadastro: Política de privacidade não aceita.');
+      return;
+    }
+
+    this.authService.register({ nome: this.nome, email: this.email, senha: this.senha }).subscribe({
       next: (response) => {
-        alert(response.message );
-        // Redirecionar para a página de login ou home após o cadastro
+        this.notificationService.success(response.message);
+        console.log('Cadastro bem-sucedido:', response.message);
         this.router.navigate(['/login']);
       },
       error: (error) => {
-        alert(error.error.message || 'Erro ao cadastrar usuário.');
+        const errorMessage = error.error.message || 'Erro ao cadastrar usuário.';
+        this.notificationService.error(errorMessage);
+        console.error('Erro no cadastro:', error);
       }
     });
+  }
+
+  onAceiteChange(event: Event) {
+    this.aceito = (event.target as HTMLInputElement).checked;
+  }
+
+  verLGPD() {
+    this.router.navigate(['/lgpd']); // Navega para a página da LGPD
   }
 }

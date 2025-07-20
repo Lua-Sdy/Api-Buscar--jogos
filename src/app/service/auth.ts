@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-   private backendUrl = 'http://localhost:3005'; // Usando o proxy configurado
+  private backendUrl = 'http://localhost:3005';
 
   constructor(private http: HttpClient) { }
 
@@ -15,16 +15,26 @@ export class AuthService {
   }
 
   login(credentials: any): Observable<any> {
-    return this.http.post(`${this.backendUrl}/api/auth/login`, credentials);
+    return this.http.post<any>(`${this.backendUrl}/api/auth/login`, credentials).pipe(
+      tap(response => {
+        if (response && response.token && response.nome) {
+          localStorage.setItem('token', response.token);
+          localStorage.setItem('username', response.nome);
+        }
+      })
+    );
   }
 
-  // Método para verificar se o usuário está logado (baseado na existência do token)
   isLoggedIn(): boolean {
     return !!localStorage.getItem('token');
   }
 
-  // Método para fazer logout
+  getUsername(): string | null {
+    return localStorage.getItem('username');
+  }
+
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('username');
   }
 }

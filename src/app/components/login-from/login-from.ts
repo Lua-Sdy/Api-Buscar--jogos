@@ -1,19 +1,21 @@
 import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms'; // Importar FormsModule
-import { AuthService } from '../../service/auth'; // Importar AuthService
+import { Router, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../service/auth';
 import { CommonModule } from '@angular/common';
+import { NotificationService } from '../../service/notification.service'; // Importar NotificationService
 
 @Component({
   selector: 'app-login-from',
   standalone: true,
-  imports: [FormsModule, CommonModule], // Adicionar FormsModule e CommonModule
+  imports: [FormsModule, CommonModule, RouterModule],
   templateUrl: './login-from.html',
   styleUrl: './login-from.css'
 })
 export class LoginFrom {
   router = inject(Router);
   authService = inject(AuthService);
+  notificationService = inject(NotificationService); // Injetar NotificationService
 
   nome: string='';
   email: string = '';
@@ -22,16 +24,17 @@ export class LoginFrom {
   onSubmit() {
     this.authService.login({ nome: this.nome, email: this.email, senha: this.senha }).subscribe({
       next: (response) => {
-        alert(response.message);
-        localStorage.setItem('token', response.token); // Armazena o token
+        this.notificationService.success(response.message);
+        console.log('Login bem-sucedido:', response.message);
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('username', response.nome); // Certifique-se que o backend retorna 'nome'
         this.router.navigate(['/home-logado']);
       },
       error: (error) => {
-        alert(error.error.message || 'Erro ao fazer login.');
+        const errorMessage = error.error.message || 'Erro ao fazer login.';
+        this.notificationService.error(errorMessage);
+        console.error('Erro no login:', error);
       }
     });
   }
-
-  
 }
-
