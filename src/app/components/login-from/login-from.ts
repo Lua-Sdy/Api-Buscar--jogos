@@ -21,6 +21,10 @@ export class LoginFrom {
   email: string = '';
   senha: string = '';
 
+  onTocadastro() {
+    this.router.navigate(["/cadastro"])
+  }
+
   onSubmit() {
     this.authService.login({ nome: this.nome, email: this.email, senha: this.senha }).subscribe({
       next: (response) => {

@@ -11,7 +11,7 @@ export class RawgService {
 
   constructor(private http: HttpClient) {}
 
-  searchGames(query: string, ordering: string = '', page: number = 1): Observable<any> {
+  searchGames(query: string, ordering: string = '', page: number = 1, genre: string = ''): Observable<any> {
     let params = new HttpParams()
       .set('key', this.apiKey)
       .set('search', query)
@@ -19,6 +19,10 @@ export class RawgService {
 
     if (ordering) {
       params = params.set('ordering', ordering);
+    }
+
+    if (genre) {
+      params = params.set('genres', genre);
     }
 
     return this.http.get(`${this.apiUrl}/games`, { params });
@@ -38,5 +42,9 @@ export class RawgService {
 
   getGameSeries(slug: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/games/${slug}/game-series?key=${this.apiKey}`);
+  }
+
+  getGenres(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/genres?key=${this.apiKey}`);
   }
 }

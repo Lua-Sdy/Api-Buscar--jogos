@@ -36,4 +36,10 @@ export class Header implements OnInit {
   onTocadastro(){
     this.router.navigate(['/cadastro']);
   }
+  onTosobre(){
+    this.router.navigate(['/sobre'])
+  }
+  onTogeneros(){
+    this.router.navigate(['/genres'])
+  }
 }

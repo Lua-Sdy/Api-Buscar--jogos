@@ -15,6 +15,7 @@
   background: none;
   border: none;
   cursor: pointer;
+  font-size: 1rem;
 }
 
 .back-button:hover {
@@ -37,20 +38,24 @@
 .description {
   line-height: 1.6;
   color: #ccc;
+  font-size: 1rem;
 }
 
-.info-box, .section-box {
+.info-box,
+.section-box {
   background-color: #3a3a3a;
   border-radius: 6px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
-.info-box h3, .section-box h3 {
+.info-box h3,
+.section-box h3 {
   margin-top: 0;
   border-bottom: 1px solid #555;
   padding-bottom: 0.5rem;
   margin-bottom: 1rem;
+  font-size: 1.3rem;
 }
 
 /* Tags, Gêneros, Plataformas */
@@ -106,11 +111,12 @@
   background-color: #555;
   border-radius: 4px;
   overflow: hidden;
+  height: 10px;
 }
 
 .ratings .fill {
   background-color: #646cff;
-  height: 10px;
+  height: 100%;
 }
 
 /* Requisitos */
@@ -132,10 +138,6 @@
   border-bottom: 1px solid #555;
   padding-bottom: 0.5rem;
   margin-bottom: 1rem;
-}
-
-.video-container {
-  margin-bottom: 1.5rem;
 }
 
 .video-container video {
@@ -191,4 +193,127 @@
   padding: 0.5rem;
   font-size: 0.9rem;
   text-align: center;
+}
+
+/* ========================================
+   RESPONSIVIDADE (Media Queries)
+   ======================================== */
+
+/* Telas médias (tablets) */
+@media (max-width: 900px) {
+  .details-container {
+    padding: 1.5rem;
+    margin: 1.5rem;
+  }
+
+  .main-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .screenshots-grid,
+  .series-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 0.8rem;
+  }
+
+  .ratings .rating-bar {
+    gap: 0.5rem;
+  }
+
+  .ratings .bar {
+    height: 8px;
+  }
+}
+
+/* Telas pequenas (móveis) */
+@media (max-width: 600px) {
+  .details-container {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .back-button {
+    font-size: 0.95rem;
+  }
+
+  .info-box,
+  .section-box {
+    padding: 1rem;
+  }
+
+  .info-box h3,
+  .section-box h3 {
+    font-size: 1.1rem;
+  }
+
+  .description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .tags-container {
+    gap: 0.4rem;
+  }
+
+  .tag {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.6rem;
+  }
+
+  .stores-list {
+    gap: 0.4rem;
+  }
+
+  .store-link {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+
+  .screenshots-grid,
+  .series-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 0.6rem;
+  }
+
+  .series-card img {
+    height: 80px;
+  }
+
+  .series-card span {
+    font-size: 0.85rem;
+    padding: 0.4rem;
+  }
+
+  .media-section {
+    margin: 1.5rem 0;
+  }
+
+  .video-container video {
+    border-radius: 4px;
+  }
+}
+
+/* Telas muito pequenas (móveis antigos ou estreitos) */
+@media (max-width: 400px) {
+  .details-container {
+    margin: 0.5rem;
+    padding: 0.8rem;
+  }
+
+  .screenshots-grid,
+  .series-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .store-link {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+  }
 }

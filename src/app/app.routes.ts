@@ -6,6 +6,8 @@ import { Cadastros } from './pages/cadastros/cadastros';
 import { HomeLogado } from './pages/home-logado/home-logado';
 import { Lgpd } from './pages/lgpd/lgpd';
 import { loginGuardGuard } from './guards/login-guard-guard';
+import { SobreComponent } from './pages/sobre/sobre';
+import { GenresComponent } from './pages/genres/genres';
 
 export const routes: Routes = [
     
@@ -38,5 +40,17 @@ export const routes: Routes = [
     {
         path: 'lgpd',
         loadComponent: () => import('./pages/lgpd/lgpd').then(c => Lgpd)
+    },
+    {
+        path:'sobre',
+        loadComponent: () => import('./pages/sobre/sobre').then(c => SobreComponent)
+    },
+    {
+        path:'genres',
+        loadComponent: () => import('./pages/genres/genres').then(c => GenresComponent)
+    },
+    {
+        path:'games-by-genre/:slug',
+        loadComponent: () => import('./pages/genres/genres').then(c => GenresComponent)
     }
 ];

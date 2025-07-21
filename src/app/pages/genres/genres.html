@@ -1,0 +1,32 @@
+<div>
+    <app-header/>
+</div>
+
+<div class="genres-container">
+  <button (click)="goBack()" class="back-button">&larr; Voltar</button>
+  <h1 *ngIf="isGenreList">Gêneros de Jogos</h1>
+  <h1 *ngIf="!isGenreList">Jogos por Gênero</h1>
+
+  <div *ngIf="isGenreList && (data$ | async) as genres" class="genres-grid">
+    <a *ngFor="let genre of genres.results" [routerLink]="['/games-by-genre', genre.slug]" class="genre-card">
+      <img [src]="genre.image_background" alt="{{ genre.name }}">
+      <div class="genre-info">
+        <h2>{{ genre.name }}</h2>
+        <p>{{ genre.games_count }} jogos</p>
+      </div>
+    </a>
+  </div>
+
+  <div *ngIf="!isGenreList && (data$ | async) as games" class="games-grid">
+    <a *ngFor="let game of games.results" [routerLink]="['/game-details', game.slug]" class="game-card">
+      <img [src]="game.background_image" alt="{{ game.name }}">
+      <div class="game-info">
+        <h2>{{ game.name }}</h2>
+      </div>
+    </a>
+  </div>
+
+  <div *ngIf="!(data$ | async)">
+    <p>Carregando...</p>
+  </div>
+</div>

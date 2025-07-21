@@ -1,0 +1,38 @@
+.about-container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+h1, h2 {
+  color: #edeaea;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+p {
+  color: #edeaea;
+  margin-bottom: 1rem;
+  }
+
+strong {
+  color: #007bff;
+}
+.back-button {
+  display: inline-block;
+  margin-bottom: 2rem;
+  color: #8a91ff;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  color: #646cff;
+  opacity: 0.7;
+}

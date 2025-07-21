@@ -40,10 +40,14 @@
 
 .custom-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.custom-navbar-brand {
+  margin-right: auto;
 }
 
 .custom-navbar-brand img {
@@ -81,4 +85,107 @@ button.custom-nav-link {
   background: none;
   border: none;
   cursor: pointer;
+}
+.logged-in-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem; /* Espaço entre 'Olá' e 'Sobre' */
+  
+}
+
+/* Responsividade: evita quebra */
+@media (max-width: 576px) {
+  .logged-in-nav {
+    flex-direction: row;
+    justify-content: center;
+    font-size: 0.9rem;
+  }
+
+  .custom-nav-link {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+/* ========================================
+   Telas Pequenas (móveis)
+   ======================================== */
+@media (max-width: 768px) {
+  .custom-container {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 0.5rem;
+  }
+
+  .custom-nav {
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 0.5rem 0;
+    border-top: 1px solid #333;
+    margin-top: 0.5rem;
+  }
+
+  .custom-nav-link {
+    font-size: 0.95rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .logged-in-nav {
+    justify-content: space-around;
+    padding: 0.5rem 0;
+    border-top: 1px solid #333;
+    gap: 1rem;
+  }
+
+  .user-menu .dropdown-menu {
+    min-width: 140px;
+    right: 0;
+    left: auto; /* Alinha à direita, mas respeita o contêiner */
+  }
+}
+
+/* ========================================
+   Muito pequeno (celulares antigos)
+   ======================================== */
+@media (max-width: 576px) {
+  .custom-nav,
+  .logged-in-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .custom-nav-link,
+  .logged-in-nav > * {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.5rem;
+  }
+
+  .dropdown-menu a {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.9rem;
+  }
+
+  .user-menu .dropdown-menu {
+    min-width: 130px;
+    top: calc(100% + 4px);
+  }
+}
+
+/* ========================================
+   Telas Médias (tablets)
+   ======================================== */
+@media (min-width: 769px) and (max-width: 992px) {
+  .custom-container {
+    gap: 1.5rem;
+  }
+
+  .logged-in-nav {
+    gap: 1rem;
+  }
+
+  .custom-nav-link {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.95rem;
+  }
 }

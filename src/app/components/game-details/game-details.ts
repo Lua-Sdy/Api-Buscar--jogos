@@ -1,12 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { RawgService } from '../../service/rawg';
 import { forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { GameDetails } from '../../interfaces/game-details.interface'; // Importar a interface externa
+
 
 @Component({
   selector: 'app-game-details',
@@ -25,7 +26,8 @@ export class GameDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private rawgService: RawgService
+    private rawgService: RawgService,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -61,6 +63,10 @@ export class GameDetailsComponent implements OnInit {
         );
       }
     });
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
   getPCRequirements(game: GameDetails): { minimum?: string, recommended?: string } | null {

@@ -12,15 +12,25 @@
       <li class="custom-nav-item">
         <button class="custom-nav-link active" (click)="onTocadastro()">Cadastrar</button>
       </li>
+      <li class="custom-nav-item">
+        <button class="custom-nav-link active" (click)="onTosobre()">sobre</button>
+      </li>
+      
     </ul>
 
     <!-- Menu para usuários logados -->
-    <ul class="custom-nav" *ngIf="isLoggedIn">
+    <ul class="custom-nav" *ngIf="isLoggedIn" [ngClass]="{'logged-in-nav': isLoggedIn}">
       <li class="custom-nav-item user-menu">
         <a class="custom-nav-link active">Olá, {{ username }}</a>
         <div class="dropdown-menu">
           <a (click)="logout()">Sair</a>
         </div>
+      </li>
+      <li class="custom-nav-item">
+        <button class="custom-nav-link active" (click)="onTosobre()">Sobre</button>
+      </li>
+      <li class="custom-nav-item">
+        <button class="custom-nav-link active" (click)="onTogeneros()">Gêneros</button>
       </li>
     </ul>
   </div>

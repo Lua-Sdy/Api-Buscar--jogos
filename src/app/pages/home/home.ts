@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CarroselComponent],
+  imports: [CarroselComponent, Header],
   templateUrl: './home.html',
   styleUrls: ['./home.css']
 })
@@ -18,5 +18,8 @@ export class Home {
   }
   onTocadastro() {
     this.router.navigate(["/cadastro"])
+  }
+   onTosobre(){
+    this.router.navigate(['/sobre'])
   }
 }

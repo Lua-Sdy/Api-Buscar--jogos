@@ -155,4 +155,118 @@
     margin-top: 1rem;
     font-size: 0.95rem;
     color: #ccc;
+}/* ========================================
+   RESPONSIVIDADE: Telas Médias (Tablets)
+   ======================================== */
+@media (max-width: 900px) {
+  .search-container {
+    padding: 0 0.5rem;
+  }
+
+  .search-container input {
+    width: 250px;
+    font-size: 0.95rem;
+    padding: 0.7rem 0.9rem;
+  }
+
+  .search-container button {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  .results-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.2rem;
+    padding: 0 0.5rem;
+  }
+
+  .game-card img {
+    height: 160px;
+  }
+
+  .game-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+}
+
+/* ========================================
+   RESPONSIVIDADE: Telas Pequenas (Móveis)
+   ======================================== */
+@media (max-width: 600px) {
+  .search-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 0.5rem;
+  }
+
+  .search-container input {
+    width: 100%;
+    max-width: 300px;
+    font-size: 1rem;
+  }
+
+  .search-container button {
+    width: 100%;
+    max-width: 300px;
+    font-size: 1rem;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr; /* Um card por linha */
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .game-card img {
+    height: 150px;
+  }
+
+  .game-info h3 {
+    font-size: 1.15rem;
+  }
+
+  .genres span,
+  .stores span {
+    font-size: 0.75rem;
+    padding: 0.15rem 0.4rem;
+    margin-right: 0.2rem;
+  }
+
+  .stores a {
+    font-size: 0.8rem;
+  }
+
+  .description {
+    font-size: 0.85rem;
+  }
+}
+
+/* ========================================
+   RESPONSIVIDADE: Telas Muito Pequenas (< 400px)
+   ======================================== */
+@media (max-width: 400px) {
+  .search-container input,
+  .search-container button {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.95rem;
+  }
+
+  .results-grid {
+    padding: 0 0.25rem;
+  }
+
+  .game-info h3 {
+    font-size: 1.1rem;
+  }
+
+  .game-info {
+    padding: 0.8rem;
+  }
 }
