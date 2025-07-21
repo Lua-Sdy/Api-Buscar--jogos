@@ -6,7 +6,7 @@ import { Observable, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private backendUrl = 'http://localhost:3005';
+  private backendUrl = 'https://api-backsql.onrender.com';
 
   constructor(private http: HttpClient) { }
 
