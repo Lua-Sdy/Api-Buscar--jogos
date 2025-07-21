@@ -1,7 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const db = require('../db');
+const db = require('../db'); // Agora importa o lowdb
 
 const router = express.Router();
 
@@ -9,21 +9,24 @@ const router = express.Router();
 router.post('/cadastro', async (req, res) => {
   const { nome, email, senha } = req.body;
 
-  console.log(nome,email,senha);
+  console.log(nome, email, senha);
 
   if (!nome || !email || !senha) {
     return res.status(400).json({ message: 'Todos os campos são obrigatórios.' });
   }
 
   try {
-    // verifica se o nome já existe
-    const [nomerows] = await db.query('SELECT * FROM usuarios WHERE nome = ?', [nome]);
-    if (nomerows.length > 0) {
+    await db.read(); // Garante que os dados mais recentes estão na memória
+
+    // Verifica se o nome já existe
+    const nomeExists = db.data.usuarios.some(user => user.nome === nome);
+    if (nomeExists) {
       return res.status(400).json({ message: 'Este nome já está em uso.' });
     }
-    // Verifica se o email já existe 
-    const [emailrows] = await db.query('SELECT * FROM usuarios WHERE email = ?', [email]);
-    if (emailrows.length > 0) {
+
+    // Verifica se o email já existe
+    const emailExists = db.data.usuarios.some(user => user.email === email);
+    if (emailExists) {
       return res.status(400).json({ message: 'Este email já está em uso.' });
     }
 
@@ -31,8 +34,13 @@ router.post('/cadastro', async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(senha, salt);
 
-    // Salva o usuário no banco
-    await db.query('INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)', [nome, email, hashedPassword]);
+    // Gera um ID simples (para lowdb, em um DB real o ID seria auto-incrementado)
+    const newId = db.data.usuarios.length > 0 ? Math.max(...db.data.usuarios.map(u => u.id)) + 1 : 1;
+
+    // Adiciona o usuário ao array de usuários
+    db.data.usuarios.push({ id: newId, nome, email, senha: hashedPassword });
+
+    await db.write(); // Salva as mudanças no arquivo db.json
 
     res.status(201).json({ message: 'Usuário cadastrado com sucesso!' });
 
@@ -51,19 +59,20 @@ router.post('/login', async (req, res) => {
   }
 
   try {
+    await db.read(); // Garante que os dados mais recentes estão na memória
+
     // Busca o usuário pelo email
-    const [rows] = await db.query('SELECT * FROM usuarios WHERE email = ?', [email]);
-    const user = rows[0];
+    const user = db.data.usuarios.find(user => user.email === email);
 
     if (!user) {
-      return res.status(400).json({ message: 'Credenciais   inválidas.' });
+      return res.status(400).json({ message: 'Credenciais inválidas.' });
     }
 
     // Compara a senha fornecida com a senha criptografada
     const isMatch = await bcrypt.compare(senha, user.senha);
 
     if (!isMatch) {
-      return res.status(400).json({ message: 'Credenciais  inválidas.' });
+      return res.status(400).json({ message: 'Credenciais inválidas.' });
     }
 
     // Gera o token JWT
