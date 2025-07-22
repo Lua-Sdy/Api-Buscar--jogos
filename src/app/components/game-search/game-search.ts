@@ -1,16 +1,16 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RawgService } from '../../service/rawg';
-import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
-import { Subject, Subscription, of } from 'rxjs';
-import { debounceTime, distinctUntilChanged, switchMap, catchError } from 'rxjs/operators';
+import { CommonModule, Location } from '@angular/common';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Subscription, of } from 'rxjs';
+import { switchMap, catchError } from 'rxjs/operators';
+import { Header } from "../header/header";
 
 @Component({
   selector: 'app-game-search',
   templateUrl: './game-search.html',
   styleUrls: ['./game-search.css'],
-  imports: [FormsModule, CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, Header],
   standalone: true
 })
 export class GameSearchComponent implements OnInit, OnDestroy {
@@ -18,29 +18,31 @@ export class GameSearchComponent implements OnInit, OnDestroy {
   results: any[] = [];
   isLoading = false;
   showNoResults = false;
-  searchSubject = new Subject<string>();
-  private searchSubscription!: Subscription;
+  private routeSubscription!: Subscription;
 
-  constructor(private rawgService: RawgService) {}
+  constructor(
+    private rawgService: RawgService,
+    private route: ActivatedRoute,
+    private location: Location
+  ) {}
 
   ngOnInit() {
-    this.searchSubscription = this.searchSubject.pipe(
-      debounceTime(400), // Espera 400ms após o usuário parar de digitar
-      distinctUntilChanged(), // Só faz a busca se o texto mudou
-      switchMap(query => {
-        if (!query.trim()) {
+    this.routeSubscription = this.route.paramMap.pipe(
+      switchMap(params => {
+        this.searchQuery = params.get('query') || '';
+        if (!this.searchQuery.trim()) {
           this.results = [];
           this.showNoResults = false;
-          return of({ results: [] }); // Retorna um observable vazio
+          return of({ results: [] });
         }
         this.isLoading = true;
         this.showNoResults = false;
-        return this.rawgService.searchGames(query).pipe(
+        return this.rawgService.searchGames(this.searchQuery).pipe(
           catchError(err => {
             console.error('Erro ao buscar jogos:', err);
             this.isLoading = false;
-            this.showNoResults = true; // Mostra a mensagem de erro/sem resultados
-            return of({ results: [] }); // Retorna um observable vazio em caso de erro
+            this.showNoResults = true;
+            return of({ results: [] });
           })
         );
       })
@@ -51,13 +53,13 @@ export class GameSearchComponent implements OnInit, OnDestroy {
     });
   }
 
-  onSearchChange() {
-    this.searchSubject.next(this.searchQuery);
+  ngOnDestroy() {
+    if (this.routeSubscription) {
+      this.routeSubscription.unsubscribe();
+    }
   }
 
-  ngOnDestroy() {
-    if (this.searchSubscription) {
-      this.searchSubscription.unsubscribe();
-    }
+  goBack(): void {
+    this.location.back();
   }
 }

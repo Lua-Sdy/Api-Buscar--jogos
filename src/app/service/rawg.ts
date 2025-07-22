@@ -47,4 +47,20 @@ export class RawgService {
   getGenres(): Observable<any> {
     return this.http.get(`${this.apiUrl}/genres?key=${this.apiKey}`);
   }
+
+  getTopRatedGames(): Observable<any> {
+    const params = new HttpParams()
+      .set('key', this.apiKey)
+      .set('ordering', '-rating')
+      .set('page_size', '10');
+    return this.http.get(`${this.apiUrl}/games`, { params });
+  }
+
+  getNewestGames(): Observable<any> {
+    const params = new HttpParams()
+      .set('key', this.apiKey)
+      .set('ordering', '-released')
+      .set('page_size', '10');
+    return this.http.get(`${this.apiUrl}/games`, { params });
+  }
 }

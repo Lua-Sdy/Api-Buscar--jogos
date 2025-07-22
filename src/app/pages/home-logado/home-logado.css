@@ -1,0 +1,106 @@
+.carousel-item {
+  padding: 10px;
+}
+
+.carousel-item .row {
+  display: flex;
+  justify-content: center;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #000; /* Cor dos ícones de navegação */
+  border-radius: 50%;
+}
+
+.carousel-control-prev{
+  width: 8%; /* Ajusta a largura dos botões de navegação */
+  left: -10%; /* Move o botão direito para fora */
+}
+.carousel-control-next {
+  width: 8%; /* Ajusta a largura dos botões de navegação */
+  left: 100%; /* Move o botão esquerdo para fora */
+  
+}
+
+/* Estilos do game-card (copiado de game-search.css) */
+.game-card {
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.game-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.game-info {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Faz o conteúdo crescer para preencher o card */
+}
+
+.game-info h3 {
+  font-size: 1.3rem;
+  margin: 0 0 0.75rem;
+  color: #fff;
+}
+
+.game-info p {
+  font-size: 0.9rem;
+  margin: 0.3rem 0;
+  color: #aaa;
+  line-height: 1.4;
+}
+
+.game-info .meta {
+    font-weight: bold;
+    color: #646cff;
+}
+
+.game-info .label {
+    font-weight: bold;
+    color: #ccc;
+}
+
+/* Media Queries para responsividade (copiado de game-search.css) */
+@media (max-width: 900px) {
+  .game-card img {
+    height: 160px;
+  }
+
+  .game-info h3 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .game-card img {
+    height: 150px;
+  }
+
+  .game-info h3 {
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .game-info h3 {
+    font-size: 1.1rem;
+  }
+
+  .game-info {
+    padding: 0.8rem;
+  }
+}

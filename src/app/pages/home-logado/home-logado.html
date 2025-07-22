@@ -3,8 +3,66 @@
 </div>
 <app-carrosel></app-carrosel>
 <br>
-<div>
-    <app-game-search></app-game-search>
+<div class="container mt-4">
+  <h2 class="text-center">Top 10 Jogos por Popularidade</h2>
+  <div id="topRatedCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div *ngFor="let chunk of topRatedGamesChunks; let i = index" [class.active]="i === 0" class="carousel-item">
+        <div class="row">
+          <div class="col-md-4" *ngFor="let game of chunk">
+            <div class="game-card mb-4 shadow-sm">
+              <a [routerLink]="['/game-details', game.slug]">
+                <img [src]="game.background_image" alt="{{ game.name }}">
+                <div class="game-info">
+                  <h3>{{ game.name }}</h3>
+                  <p>Rating: {{ game.rating }}</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#topRatedCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#topRatedCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+
+<div class="container mt-4">
+  <h2 class="text-center">Top 10 Lançamentos Recentes</h2>
+  <div id="newestGamesCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div *ngFor="let chunk of newestGamesChunks; let i = index" [class.active]="i === 0" class="carousel-item">
+        <div class="row">
+          <div class="col-md-4" *ngFor="let game of chunk">
+            <div class="game-card mb-4 shadow-sm">
+              <a [routerLink]="['/game-details', game.slug]">
+                <img [src]="game.background_image" alt="{{ game.name }}">
+                <div class="game-info">
+                  <h3>{{ game.name }}</h3>
+                  <p>Lançamento: {{ game.released | date }}</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#newestGamesCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#newestGamesCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
 </div>
 
 

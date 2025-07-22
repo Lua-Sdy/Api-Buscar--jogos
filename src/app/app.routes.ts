@@ -52,5 +52,9 @@ export const routes: Routes = [
     {
         path:'games-by-genre/:slug',
         loadComponent: () => import('./pages/genres/genres').then(c => GenresComponent)
+    },
+    {
+        path:'search-results/:query',
+        loadComponent: () => import('./components/game-search/game-search').then(c => c.GameSearchComponent)
     }
 ];
