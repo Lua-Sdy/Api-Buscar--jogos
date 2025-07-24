@@ -2,11 +2,12 @@ import { Component, inject } from '@angular/core';
 import { CarroselComponent } from '../../components/carrosel/carrosel';
 import { Header } from "../../components/header/header";
 import { Router } from '@angular/router';
+import { Footer } from "../../components/footer/footer";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CarroselComponent, Header],
+  imports: [CarroselComponent, Header, Footer],
   templateUrl: './home.html',
   styleUrls: ['./home.css']
 })

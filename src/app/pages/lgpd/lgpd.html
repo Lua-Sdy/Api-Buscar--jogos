@@ -1,29 +1,79 @@
-<div>
-  <h1>Política de Privacidade</h1>
-  <p>Última atualização: 19 de julho de 2025</p>
+<div class="modal-overlay" *ngIf="isVisible">
+  <div class="modal-content">
+    <button class="close-button" (click)="closeModal()">&times;</button>
+    <h1>Política de Privacidade</h1>
+    <p>Última atualização: 23 de julho de 2025</p>
 
-  <p>A sua privacidade é importante para nós. É política do nosso site respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar.</p>
+    <p>A sua privacidade é importante para nós. É política do nosso site respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar.</p>
 
-  <h2>1. Coleta de Dados</h2>
-  <p>Coletamos informações pessoais que você nos fornece diretamente, como nome, e-mail e senha, quando você se cadastra em nosso site.</p>
+    <h2>1. Coleta de Dados</h2>
+    <p>Nosso site coleta e utiliza alguns dados pessoais seus para viabilizar a prestação de serviços e aprimorar a experiência de uso.</p>
+    <h3>1.1. Dados Pessoais Fornecidos pelo Titular:</h3>
+    <ul>
+      <li><b>Dados de Cadastro:</b> Ao criar uma conta em nosso site, coletamos informações como: nome completo, endereço de e-mail e senha. A utilização de certas funcionalidades dependerá deste cadastro.</li>
+      <li><b>Dados de Comunicação:</b> Quando você entra em contato conosco (via formulário, e-mail, chat), podemos armazenar os dados fornecidos, incluindo o teor da mensagem, para futuras consultas e para facilitar a comunicação.</li>
+    </ul>
+    <h3>1.2. Dados Pessoais Coletados Automaticamente:</h3>
+    <ul>
+      <li><b>Dados de Navegação:</b> Coletamos dados como endereço IP, tipo e versão do navegador, páginas visitadas, tempo gasto em cada página, e outros dados de diagnóstico para monitorar e analisar o uso do nosso serviço.</li>
+      <li><b>Cookies e Tecnologias Similares:</b> Utilizamos cookies para rastrear a atividade em nosso serviço e armazenar certas informações. Para mais detalhes, consulte nossa Política de Cookies abaixo.</li>
+    </ul>
 
-  <h2>2. Uso de Dados</h2>
-  <p>Usamos as informações que coletamos para operar e manter nosso site, para nos comunicarmos com você, para entender e analisar como você usa nosso site e para desenvolver novos produtos, serviços, recursos e funcionalidades.</p>
+    <h2>2. Como e Por Que Coletamos Seus Dados?</h2>
+    <p>O tratamento dos seus dados pessoais ocorre para as seguintes finalidades:</p>
+    <ul>
+      <li>Para criar e gerenciar sua conta de usuário.</li>
+      <li>Para viabilizar a prestação dos nossos serviços e o funcionamento da plataforma.</li>
+      <li>Para nos comunicarmos com você, respondendo a solicitações e enviando informações importantes sobre sua conta, serviços e atualizações da política.</li>
+      <li>Para fins de marketing, com o seu consentimento, enviando newsletters e ofertas que possam ser do seu interesse. Você pode optar por não receber essas comunicações a qualquer momento.</li>
+      <li>Para cumprir obrigações legais ou regulatórias.</li>
+    </ul>
 
-  <h2>3. Consentimento</h2>
-  <p>Ao utilizar nosso site, você concorda com a nossa Política de Privacidade e concorda com os seus termos.</p>
+    <h2>3. Com Quem Seus Dados Podem Ser Compartilhados?</h2>
+    <p>Não compartilhamos seus dados pessoais com terceiros para fins de marketing. Seus dados podem ser compartilhados nas seguintes situações:</p>
+    <ul>
+      <li><b>Provedores de Serviços:</b> Com empresas que nos auxiliam a operar nosso negócio (ex: provedores de hospedagem, serviços de e-mail). Esses provedores só podem usar seus dados para realizar tarefas em nosso nome.</li>
+      <li><b>Obrigação Legal:</b> Se exigido por lei, como em resposta a uma intimação, ordem judicial ou outra solicitação governamental.</li>
+      <li><b>Proteção de Direitos:</b> Para proteger nossos direitos, propriedade ou segurança, bem como a de nossos usuários e do público em geral.</li>
+    </ul>
 
-  <h2>4. Direitos do Titular dos Dados</h2>
-  <p>Você tem o direito de acessar, corrigir, atualizar ou solicitar a exclusão de suas informações pessoais.</p>
+    <h2>4. Armazenamento e Segurança dos Dados</h2>
+    <p>Seus dados pessoais serão armazenados durante o tempo necessário para cumprir as finalidades para as quais foram coletados, a menos que um período de retenção mais longo seja exigido por lei. Adotamos medidas de segurança técnicas e administrativas para proteger seus dados, como criptografia e controle de acesso.</p>
+    <p>No entanto, nenhum método de transmissão pela Internet ou de armazenamento eletrônico é 100% seguro. Embora nos esforcemos para usar meios comercialmente aceitáveis para proteger seus dados, não podemos garantir sua segurança absoluta.</p>
 
-  <h2>5. Segurança</h2>
-  <p>A segurança de suas informações pessoais é importante para nós, mas lembre-se de que nenhum método de transmissão pela Internet ou método de armazenamento eletrônico é 100% seguro.</p>
+    <h2>5. Quais São os Seus Direitos?</h2>
+    <p>A LGPD garante a você, como titular dos dados, os seguintes direitos:</p>
+    <ul>
+      <li>Confirmação da existência de tratamento de seus dados.</li>
+      <li>Acesso aos seus dados.</li>
+      <li>Correção de dados incompletos, inexatos ou desatualizados.</li>
+      <li>Anonimização, bloqueio ou eliminação de dados desnecessários ou tratados em desconformidade com a lei.</li>
+      <li>Portabilidade dos dados a outro fornecedor de serviço.</li>
+      <li>Eliminação dos dados pessoais tratados com o seu consentimento.</li>
+      <li>Informação sobre as entidades com as quais o controlador realizou uso compartilhado de dados.</li>
+      <li>Revogação do consentimento.</li>
+    </ul>
 
-  <h2>6. Alterações a esta Política de Privacidade</h2>
-  <p>Podemos atualizar nossa Política de Privacidade de tempos em tempos. Aconselhamos que você revise esta página periodicamente para quaisquer alterações.</p>
+    <h2>6. Como Você Pode Exercer Seus Direitos?</h2>
+    <p>Para exercer seus direitos, você pode acessar as configurações da sua conta ou entrar em contato conosco através do e-mail: [Seu E-mail de Contato para Privacidade].</p>
 
-  <h2>7. Contato</h2>
-  <p>Se você tiver alguma dúvida sobre esta Política de Privacidade, entre em contato conosco.</p>
+    <h2>7. Política de Cookies</h2>
+    <p>Cookies são pequenos arquivos de texto armazenados no seu navegador. Eles nos ajudam a entender como você usa o site, a personalizar sua experiência e a exibir anúncios relevantes. Você pode gerenciar suas preferências de cookies diretamente nas configurações do seu navegador.</p>
 
-  <button class="btn-back" (click)="voltarParaCadastro()">Voltar para Cadastro</button>
+    <h2>8. Links para Sites de Terceiros</h2>
+    <p>Nosso site pode conter links para sites de terceiros. Não somos responsáveis pelas práticas de privacidade desses outros sites. Recomendamos que você leia as políticas de privacidade de cada site que visitar.</p>
+
+    <h2>9. Alterações nesta Política de Privacidade</h2>
+    <p>Podemos atualizar nossa Política de Privacidade periodicamente. Notificaremos você sobre quaisquer alterações, publicando a nova política nesta página e/ou enviando um e-mail.</p>
+
+    <h2>10. Contato</h2>
+    <p>Se você tiver alguma dúvida sobre esta Política de Privacidade, entre em contato conosco:</p>
+    <ul>
+      <li><b>Nome da Empresa/Controlador:</b> [Seu Nome/Nome da Empresa]</li>
+      <li><b>E-mail:</b> [Seu E-mail de Contato]</li>
+      <li><b>Endereço:</b> [Seu Endereço Físico, se aplicável]</li>
+    </ul>
+
+    <button class="btn-back" (click)="closeModal()">Fechar</button>
+  </div>
 </div>

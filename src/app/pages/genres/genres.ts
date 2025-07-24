@@ -4,6 +4,7 @@ import { RawgService } from '../../service/rawg';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Header } from '../../components/header/header';
+import { Footer } from "../../components/footer/footer";
 
 interface Genre {
   id: number;
@@ -16,7 +17,7 @@ interface Genre {
 @Component({
   selector: 'app-genres',
   standalone: true,
-  imports: [CommonModule, RouterLink, Header],
+  imports: [CommonModule, RouterLink, Header, Footer],
   templateUrl: './genres.html',
   styleUrls: ['./genres.css']
 })

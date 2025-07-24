@@ -1,36 +1,53 @@
+/* Estilos gerais */
 .carousel-item {
+  
+  border-top: 1px solid #f6f6f8; /* Linha azul clara */
   padding: 10px;
 }
 
 .carousel-item .row {
+  margin-top: 30px;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap; /* Permite que os itens quebrem linha em telas menores */
 }
 
+/* Ícones de navegação do carrossel */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  background-color: #000; /* Cor dos ícones de navegação */
+  background-color: #000;
   border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
 }
 
-.carousel-control-prev{
-  width: 8%; /* Ajusta a largura dos botões de navegação */
-  left: -10%; /* Move o botão direito para fora */
-}
+.carousel-control-prev,
 .carousel-control-next {
-  width: 8%; /* Ajusta a largura dos botões de navegação */
-  left: 100%; /* Move o botão esquerdo para fora */
-  
+  width: 5%; /* Reduzido para evitar sobreposição em telas pequenas */
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-/* Estilos do game-card (copiado de game-search.css) */
+.carousel-control-prev {
+  left: 5%;
+}
+
+.carousel-control-next {
+  right: 5%;
+}
+
+/* Card do jogo */
 .game-card {
+  
   background-color: #2a2a2a;
   border-radius: 8px;
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 280px; /* Define um tamanho máximo para cada card */
+  margin: 0 auto; /* Centraliza os cards */
 }
 
 .game-card:hover {
@@ -48,7 +65,7 @@
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  flex-grow: 1; /* Faz o conteúdo crescer para preencher o card */
+  flex-grow: 1;
 }
 
 .game-info h3 {
@@ -65,17 +82,22 @@
 }
 
 .game-info .meta {
-    font-weight: bold;
-    color: #646cff;
+  font-weight: bold;
+  color: #646cff;
 }
 
 .game-info .label {
-    font-weight: bold;
-    color: #ccc;
+  font-weight: bold;
+  color: #ccc;
 }
 
-/* Media Queries para responsividade (copiado de game-search.css) */
+/* Media Queries para responsividade */
 @media (max-width: 900px) {
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 8%;
+  }
+
   .game-card img {
     height: 160px;
   }
@@ -86,6 +108,11 @@
 }
 
 @media (max-width: 600px) {
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 10%;
+  }
+
   .game-card img {
     height: 150px;
   }
@@ -93,14 +120,27 @@
   .game-info h3 {
     font-size: 1.15rem;
   }
+
+  .game-info {
+    padding: 0.8rem;
+  }
 }
 
 @media (max-width: 400px) {
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 12%;
+  }
+
   .game-info h3 {
     font-size: 1.1rem;
   }
 
   .game-info {
-    padding: 0.8rem;
+    padding: 0.7rem;
+  }
+
+  .game-card {
+    max-width: 100%; /* Remove limite de largura em telas muito pequenas */
   }
 }

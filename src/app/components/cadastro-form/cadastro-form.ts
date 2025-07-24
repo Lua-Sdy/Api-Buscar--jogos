@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../service/auth';
 import { CommonModule } from '@angular/common';
 import { NotificationService } from '../../service/notification.service';
+import { Lgpd } from '../../pages/lgpd/lgpd'; // Importar o componente LGPD
 
 @Component({
   selector: 'app-cadastro-form',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, Lgpd], // Adicionar Lgpd aos imports
   templateUrl: './cadastro-form.html',
   styleUrl: './cadastro-form.css'
 })
@@ -22,6 +23,7 @@ export class CadastroForm {
   senha: string = '';
   confirmarSenha: string = '';
   aceito: boolean = false; // Adicionado para o checkbox LGPD
+  showLgpdModal: boolean = false; // Propriedade para controlar a visibilidade do modal
 
   onSubmit() {
     if (!this.nome || !this.email || !this.senha || !this.confirmarSenha) {
@@ -67,6 +69,14 @@ export class CadastroForm {
   }
 
   verLGPD() {
-    this.router.navigate(['/lgpd']); // Navega para a página da LGPD
+    this.openLgpdModal(); // Abre o modal LGPD
+  }
+
+  openLgpdModal() {
+    this.showLgpdModal = true; // Abre o modal LGPD
+  }
+
+  closeLgpdModal() {
+    this.showLgpdModal = false; // Fecha o modal LGPD
   }
 }

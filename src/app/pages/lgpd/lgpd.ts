@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-lgpd',
@@ -10,10 +9,12 @@ import { Router, RouterOutlet } from '@angular/router';
   styleUrl: './lgpd.css'
 })
 export class Lgpd {
+  @Input() isVisible: boolean = false;
+  @Output() closeModalEvent = new EventEmitter<void>();
 
-  constructor(private router: Router) { }
+  constructor() { }
 
-  voltarParaCadastro() {
-    this.router.navigate(['/cadastro']);
+  closeModal() {
+    this.closeModalEvent.emit();
   }
 }

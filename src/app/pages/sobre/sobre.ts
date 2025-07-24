@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth';
+import { Header } from "../../components/header/header";
+import { Footer } from "../../components/footer/footer";
 
 @Component({
   selector: 'app-sobre',
   standalone: true,
-  imports: [],
+  imports: [Header, Footer],
   templateUrl: './sobre.html',
   styleUrl: './sobre.css'
 })

@@ -2,7 +2,7 @@
   <img src="../assets/img/002.jpg" alt="">
 </div>
 <div class="container mt-5">
-  <h2 class="mb-4">Cadrastre de usurário</h2>
+  <h2 class="mb-4">Cadrastro de usurário</h2>
 
   <!-- Formulário de cadastro -->
   <form (ngSubmit)="onSubmit()">
@@ -41,3 +41,5 @@
     <button type="submit" class="btn btn-primary" [disabled]="!aceito">Cadastrar</button>
   </form>
 </div>
+
+<app-lgpd [isVisible]="showLgpdModal" (closeModalEvent)="closeLgpdModal()"></app-lgpd>

@@ -1,0 +1,49 @@
+<div class="footer">
+  <div class="container">
+    <div class="row">
+      <!-- Coluna 1: Seguir a Nuvem -->
+      <div class="col-md-4">
+        <h3>Seguir a Game Sdy</h3>
+        <div class="social-links">
+          <button class="footer-button social-icon" (click)="onSocialClick('facebook')"><i class="fab fa-facebook"></i></button>
+          <button class="footer-button social-icon" (click)="onSocialClick('instagram')"><i class="fab fa-instagram"></i></button>
+          <button class="footer-button social-icon" (click)="onSocialClick('twitter')"><i class="fab fa-twitter"></i></button>
+          <button class="footer-button social-icon" (click)="onSocialClick('youtube')"><i class="fab fa-youtube"></i></button>
+          <button class="footer-button social-icon" (click)="onSocialClick('discord')"><i class="fab fa-discord"></i></button>
+          <button class="footer-button social-icon" (click)="onSocialClick('twitch')"><i class="fab fa-twitch"></i></button>
+          <button class="footer-button social-icon" (click)="onSocialClick('linkedin')"><i class="fab fa-linkedin"></i></button>
+        </div>
+      </div>
+
+      <!-- Coluna 2: Institucional -->
+      <div class="col-md-4">
+        <h3>Institucional</h3>
+        <ul class="list-unstyled">
+          <li><button class="footer-button" (click)="onInstitutionalClick('sobre')">Sobre</button></li>
+          <li><button class="footer-button" (click)="onInstitutionalClick('seguranca')">Segurança</button></li>
+        </ul>
+      </div>
+
+      <!-- Coluna 3: Ajuda -->
+      <div class="col-md-4">
+        <h3>Ajuda</h3>
+        <ul class="list-unstyled">
+          <li><button class="footer-button" (click)="onHelpClick('suporte')">Suporte</button></li>
+          <li><button class="footer-button" (click)="onHelpClick('termos')">Termos de Uso</button></li>
+          <li><button class="footer-button" (click)="onHelpClick('privacidade')">Política de Privacidade</button></li>
+          <li><button class="footer-button" (click)="onHelpClick('procon')">Procon-BA</button></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Linha inferior com idioma, país e informações legais -->
+    <div class="bottom-bar">
+      <div class="legal-info">
+        <p>&copy; 2005 - 2025</p>
+        <p>Sdy Games Ltda. - CNPJ 00000.000/0001-00</p>
+      </div>
+    </div>
+  </div>
+</div>
+<app-lgpd [isVisible]="showLgpdModal" (closeModalEvent)="closeLgpdModal()"></app-lgpd>
+     

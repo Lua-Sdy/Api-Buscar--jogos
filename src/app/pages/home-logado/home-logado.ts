@@ -5,11 +5,12 @@ import { Header } from "../../components/header/header";
 import { RawgService } from '../../service/rawg';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { Footer } from "../../components/footer/footer";
 
 
 @Component({
   selector: 'app-home-logado',
-  imports: [CarroselComponent, Header, CommonModule, RouterLink],
+  imports: [CarroselComponent, Header, CommonModule, RouterLink, Footer],
   templateUrl: './home-logado.html',
   styleUrl: './home-logado.css'
 })

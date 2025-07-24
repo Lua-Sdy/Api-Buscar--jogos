@@ -1,3 +1,4 @@
+/* Estilos base para o container principal */
 .about-container {
   padding: 2rem;
   max-width: 800px;
@@ -7,6 +8,7 @@
   color: #333;
 }
 
+/* Estilos para títulos h1 e h2 */
 h1, h2 {
   color: #edeaea;
   border-bottom: 2px solid #eee;
@@ -14,14 +16,18 @@ h1, h2 {
   margin-bottom: 20px;
 }
 
+/* Estilos para parágrafos */
 p {
   color: #edeaea;
   margin-bottom: 1rem;
-  }
+}
 
+/* Estilos para texto em negrito */
 strong {
   color: #007bff;
 }
+
+/* Estilos para botão de voltar */
 .back-button {
   display: inline-block;
   margin-bottom: 2rem;
@@ -32,7 +38,183 @@ strong {
   cursor: pointer;
 }
 
+/* Estilos para hover do botão de voltar */
 .back-button:hover {
   color: #646cff;
   opacity: 0.7;
+}
+
+/* ===== ESTILOS RESPONSIVOS ===== */
+
+/* Para tablets (768px ou menos) */
+@media screen and (max-width: 768px) {
+  /* Reduz o padding do container principal */
+  .about-container {
+    padding: 1.5rem;
+  }
+  
+  /* Ajusta os títulos para telas menores */
+  h1, h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+  
+  /* Ajusta parágrafos para melhor leitura em telas menores */
+  p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}
+
+/* Para smartphones (480px ou menos) */
+@media screen and (max-width: 480px) {
+  /* Reduz ainda mais o padding para telas pequenas */
+  .about-container {
+    padding: 1rem;
+    margin: 0 10px; /* Adiciona margem lateral para telas muito pequenas */
+  }
+  
+  /* Ajusta títulos para smartphones */
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  h2 {
+    font-size: 1.3rem;
+  }
+  
+  /* Ajusta parágrafos para smartphones */
+  p {
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  /* Ajusta o botão de voltar para telas pequenas */
+  .back-button {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Para telas muito pequenas (320px ou menos) */
+@media screen and (max-width: 320px) {
+  /* Padding mínimo para telas muito pequenas */
+  .about-container {
+    padding: 0.8rem 5px;
+  }
+  
+  /* Ajusta títulos para telas muito pequenas */
+  h1 {
+    font-size: 1.3rem;
+  }
+  
+  h2 {
+    font-size: 1.1rem;
+  }
+  
+  /* Ajusta parágrafos */
+  p {
+    font-size: 0.9rem;
+    margin-bottom: 0.7rem;
+  }
+}
+
+/* Para telas grandes (acima de 1200px) */
+@media screen and (min-width: 1200px) {
+  /* Aumenta o container para telas grandes */
+  .about-container {
+    max-width: 1000px;
+    padding: 3rem;
+  }
+  
+  /* Ajusta títulos para telas grandes */
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  /* Ajusta parágrafos para telas grandes */
+  p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+}
+
+/* ===== MEDIA QUERIES PARA ORIENTAÇÃO ===== */
+
+/* Para dispositivos em modo paisagem */
+@media screen and (orientation: landscape) and (max-width: 768px) {
+  /* Ajusta o container para melhor aproveitamento do espaço em paisagem */
+  .about-container {
+    padding: 1.2rem;
+    margin: 0 15px;
+  }
+}
+
+/* Para dispositivos em modo retrato */
+@media screen and (orientation: portrait) and (max-width: 768px) {
+  /* Ajusta o container para modo retrato */
+  .about-container {
+    padding: 1.5rem;
+  }
+}
+
+/* ===== MEDIA QUERIES PARA TIPOS ESPECÍFICOS DE DISPOSITIVOS ===== */
+
+/* Para tablets em modo paisagem */
+@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .about-container {
+    padding: 2rem 1.5rem;
+    max-width: 90%;
+  }
+}
+
+/* Para iPads e tablets similares */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .about-container {
+    padding: 1.8rem;
+    max-width: 85%;
+  }
+}
+
+/* ===== AJUSTES PARA ACESSIBILIDADE ===== */
+
+/* Media query para usuários que preferem tamanhos de fonte maiores */
+@media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2) {
+  .about-container {
+    font-size: 1.1em;
+  }
+}
+
+/* ===== BREAKPOINTS PERSONALIZADOS ===== */
+
+/* Para telas médias (entre 769px e 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .about-container {
+    padding: 1.8rem;
+    max-width: 90%;
+  }
+  
+  h1, h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Para telas entre 481px e 767px */
+@media screen and (min-width: 481px) and (max-width: 767px) {
+  .about-container {
+    padding: 1.3rem;
+    max-width: 95%;
+  }
+  
+  h1 {
+    font-size: 1.7rem;
+  }
+  
+  h2 {
+    font-size: 1.4rem;
+  }
 }

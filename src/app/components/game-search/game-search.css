@@ -1,3 +1,4 @@
+/* Estilos para indicador de carregamento e mensagem de sem resultados */
 .loading-indicator, .no-results {
   text-align: center;
   margin-top: 2rem;
@@ -6,11 +7,13 @@
 }
 
 /* Estilos do Componente de Busca */
-*{
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+
+/* Imagem de fundo fixa */
 .img-bg {
   position: fixed;
   top: 0;
@@ -26,6 +29,7 @@
   object-fit: cover; /* Ajusta a imagem para cobrir toda a área */
 }
 
+/* Botão de voltar */
 .back-button {
   width: 10%;
   margin-bottom: 2rem;
@@ -37,6 +41,7 @@
   cursor: pointer;
   font-size: 1.5rem;
   margin: 10px;
+  /* Removido width fixo para melhor responsividade */
 }
 
 .back-button:hover {
@@ -53,6 +58,7 @@
   padding: 0;
 }
 
+/* Card de jogo individual */
 .game-card {
   background-color: #2a2a2a;
   border-radius: 8px;
@@ -62,23 +68,27 @@
   flex-direction: column;
 }
 
+/* Efeito hover no card */
 .game-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* Imagem do jogo */
 .game-card img {
   width: 100%;
   height: 180px;
   object-fit: cover;
 }
 
+/* Vídeo do jogo */
 .game-card video {
-    width: 100%;
-    height: auto;
-    margin-top: 1rem;
+  width: 100%;
+  height: auto;
+  margin-top: 1rem;
 }
 
+/* Informações do jogo */
 .game-info {
   padding: 1rem;
   display: flex;
@@ -86,12 +96,14 @@
   flex-grow: 1; /* Faz o conteúdo crescer para preencher o card */
 }
 
+/* Título do jogo */
 .game-info h3 {
   font-size: 1.3rem;
   margin: 0 0 0.75rem;
   color: #fff;
 }
 
+/* Parágrafos de informações */
 .game-info p {
   font-size: 0.9rem;
   margin: 0.3rem 0;
@@ -99,61 +111,79 @@
   line-height: 1.4;
 }
 
+/* Metadados em destaque */
 .game-info .meta {
-    font-weight: bold;
-    color: #646cff;
+  font-weight: bold;
+  color: #646cff;
 }
 
+/* Labels de informações */
 .game-info .label {
-    font-weight: bold;
-    color: #ccc;
+  font-weight: bold;
+  color: #ccc;
 }
 
+/* Seções de gêneros e lojas */
 .genres, .stores {
-    margin-top: 0.5rem;
+  margin-top: 0.5rem;
 }
 
+/* Tags de gêneros e lojas */
 .genres span, .stores span {
-    background-color: #3a3a3a;
-    border-radius: 4px;
-    padding: 0.2rem 0.5rem;
-    font-size: 0.8rem;
-    margin-right: 0.3rem;
+  background-color: #3a3a3a;
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.8rem;
+  margin-right: 0.3rem;
 }
 
+/* Links para lojas */
 .stores a {
-    color: #8a91ff;
-    text-decoration: underline;
+  color: #8a91ff;
+  text-decoration: underline;
 }
 
 .stores a:hover {
-    color: #646cff;
+  color: #646cff;
 }
 
+/* Descrição do jogo */
 .description {
-    margin-top: 1rem;
-    font-size: 0.95rem;
-    color: #ccc;
-}/* ========================================
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+/* ========================================
    RESPONSIVIDADE: Telas Médias (Tablets)
    ======================================== */
 @media (max-width: 900px) {
+  /* Ajusta o grid para telas médias */
   .results-grid {
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 1.2rem;
     padding: 0 0.5rem;
   }
 
+  /* Reduz altura da imagem */
   .game-card img {
     height: 160px;
   }
 
+  /* Ajusta tamanho do título */
   .game-info h3 {
     font-size: 1.2rem;
   }
 
+  /* Ajusta tamanho da descrição */
   .description {
     font-size: 0.9rem;
+  }
+  
+  /* Ajusta botão de voltar para tablets */
+  .back-button {
+    width: 15%;
+    font-size: 1.3rem;
   }
 }
 
@@ -161,20 +191,24 @@
    RESPONSIVIDADE: Telas Pequenas (Móveis)
    ======================================== */
 @media (max-width: 600px) {
+  /* Um card por linha em telas pequenas */
   .results-grid {
-    grid-template-columns: 1fr; /* Um card por linha */
+    grid-template-columns: 1fr;
     gap: 1rem;
     padding: 0 0.5rem;
   }
 
+  /* Reduz altura da imagem para mobile */
   .game-card img {
     height: 150px;
   }
 
+  /* Ajusta tamanho do título para mobile */
   .game-info h3 {
     font-size: 1.15rem;
   }
 
+  /* Ajusta tags de gêneros e lojas */
   .genres span,
   .stores span {
     font-size: 0.75rem;
@@ -182,12 +216,27 @@
     margin-right: 0.2rem;
   }
 
+  /* Ajusta links de lojas */
   .stores a {
     font-size: 0.8rem;
   }
 
+  /* Ajusta tamanho da descrição para mobile */
   .description {
     font-size: 0.85rem;
+  }
+  
+  /* Ajusta botão de voltar para mobile */
+  .back-button {
+    width: 20%;
+    font-size: 1.2rem;
+    margin: 5px;
+  }
+  
+  /* Ajusta indicador de carregamento para mobile */
+  .loading-indicator, .no-results {
+    font-size: 1rem;
+    margin-top: 1rem;
   }
 }
 
@@ -195,15 +244,214 @@
    RESPONSIVIDADE: Telas Muito Pequenas (< 400px)
    ======================================== */
 @media (max-width: 400px) {
+  /* Ajusta padding do grid */
   .results-grid {
     padding: 0 0.25rem;
   }
 
+  /* Ajusta tamanho do título */
   .game-info h3 {
     font-size: 1.1rem;
   }
 
+  /* Reduz padding das informações */
   .game-info {
     padding: 0.8rem;
+  }
+  
+  /* Botão de voltar ainda menor para telas muito pequenas */
+  .back-button {
+    width: 25%;
+    font-size: 1rem;
+  }
+  
+  /* Ajusta espaçamento dos cards */
+  .game-card {
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* ========================================
+   RESPONSIVIDADE: Telas Grandes (> 1200px)
+   ======================================== */
+@media (min-width: 1200px) {
+  /* Mais colunas em telas grandes */
+  .results-grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  /* Aumenta altura da imagem */
+  .game-card img {
+    height: 200px;
+  }
+
+  /* Ajusta tamanho do título */
+  .game-info h3 {
+    font-size: 1.4rem;
+  }
+
+  /* Ajusta tamanho da descrição */
+  .description {
+    font-size: 1rem;
+  }
+  
+  /* Botão de voltar maior para telas grandes */
+  .back-button {
+    width: 8%;
+    font-size: 1.7rem;
+  }
+}
+
+/* ========================================
+   RESPONSIVIDADE: Orientação Paisagem
+   ======================================== */
+@media (max-width: 768px) and (orientation: landscape) {
+  /* Ajusta grid para melhor aproveitamento em paisagem */
+  .results-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.8rem;
+  }
+
+  /* Reduz altura da imagem em paisagem */
+  .game-card img {
+    height: 120px;
+  }
+
+  /* Ajusta tamanho do título */
+  .game-info h3 {
+    font-size: 1rem;
+  }
+
+  /* Ajusta informações para paisagem */
+  .game-info {
+    padding: 0.6rem;
+  }
+
+  /* Ajusta tags */
+  .genres span,
+  .stores span {
+    font-size: 0.7rem;
+    padding: 0.1rem 0.3rem;
+  }
+}
+
+/* ========================================
+   RESPONSIVIDADE: Dispositivos com Touch
+   ======================================== */
+@media (hover: none) and (pointer: coarse) {
+  /* Remove efeito hover em dispositivos touch */
+  .game-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* Ajusta transições para melhor performance touch */
+  .game-card {
+    transition: none;
+  }
+}
+
+/* ========================================
+   RESPONSIVIDADE: Impressão
+   ======================================== */
+@media print {
+  /* Esconde elementos desnecessários na impressão */
+  .back-button,
+  .img-bg {
+    display: none;
+  }
+
+  /* Ajusta cores para impressão */
+  .game-card {
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: none;
+  }
+
+  .game-info h3 {
+    color: black;
+  }
+
+  .game-info p {
+    color: black;
+  }
+}
+
+/* ========================================
+   RESPONSIVIDADE: Alto Contraste
+   ======================================== */
+@media (prefers-contrast: high) {
+  /* Ajusta cores para alto contraste */
+  .game-card {
+    border: 2px solid white;
+  }
+
+  .game-info h3 {
+    color: white;
+  }
+
+  .game-info p {
+    color: white;
+  }
+
+  .back-button {
+    border: 2px solid white;
+  }
+}
+
+/* ========================================
+   RESPONSIVIDADE: Redução de Movimento
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  /* Remove animações para usuários que preferem menos movimento */
+  .game-card {
+    transition: none;
+  }
+
+  .game-card:hover {
+    transform: none;
+  }
+}
+
+/* ========================================
+   RESPONSIVIDADE: Breakpoints Adicionais
+   ======================================== */
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Ajustes específicos para tablets */
+  .results-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.3rem;
+  }
+
+  .game-card img {
+    height: 170px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  /* Ajustes para telas médias pequenas */
+  .results-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.1rem;
+  }
+
+  .game-card img {
+    height: 140px;
+  }
+}
+
+@media (max-width: 360px) {
+  /* Ajustes para telas muito pequenas */
+  .results-grid {
+    gap: 0.7rem;
+  }
+
+  .game-info h3 {
+    font-size: 1rem;
+  }
+
+  .game-info p {
+    font-size: 0.8rem;
   }
 }
