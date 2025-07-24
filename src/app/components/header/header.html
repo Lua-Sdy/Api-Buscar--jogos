@@ -2,7 +2,7 @@
 <nav class="custom-navbar">
   <!-- Container personalizado para organizar os elementos da navbar -->
   <div class="custom-container">
-    
+
     <!-- Link da marca/logo que redireciona para home conforme status de login -->
     <!-- Usa evento click ao invés de href para navegação programática -->
     <!-- style="cursor: pointer;" indica visualmente que é clicável -->
@@ -13,57 +13,44 @@
 
     <!-- Lista de navegação para usuários NÃO logados (visível apenas quando !isLoggedIn) -->
     <ul class="custom-nav" *ngIf="!isLoggedIn">
-      
+
       <!-- Item de menu para login -->
       <li class="custom-nav-item">
         <!-- Botão que chama método onTologin() ao ser clicado -->
         <button class="custom-nav-link active" (click)="onTologin()">Login</button>
       </li>
-      
+
       <!-- Item de menu para cadastro -->
       <li class="custom-nav-item">
         <!-- Botão que chama método onTocadastro() ao ser clicado -->
         <button class="custom-nav-link active" (click)="onTocadastro()">Cadastrar</button>
       </li>
-      
-      <!-- Item de menu para página sobre -->
-      <li class="custom-nav-item">
-        <!-- Botão que chama método onTosobre() ao ser clicado -->
-        <button class="custom-nav-link active" (click)="onTosobre()">sobre</button>
-      </li>
-      
     </ul>
 
     <!-- Lista de navegação para usuários LOGADOS (visível apenas quando isLoggedIn é true) -->
     <!-- [ngClass] adiciona classe CSS condicionalmente -->
     <ul class="custom-nav" *ngIf="isLoggedIn" [ngClass]="{'logged-in-nav': isLoggedIn}">
-      
+
       <!-- Container para barra de busca -->
       <div class="search-bar-container">
-        
+
         <!-- Campo de input para busca de jogos -->
         <!-- [(ngModel)] cria two-way data binding com a propriedade searchQuery -->
         <!-- (ngModelChange) dispara quando o valor muda -->
         <!-- (keyup.enter) dispara quando usuário pressiona Enter -->
         <!-- placeholder mostra texto de ajuda quando campo está vazio -->
-        <input
-          type="text"
-          [(ngModel)]="searchQuery"
-          (ngModelChange)="onSearchChange()"
-          (keyup.enter)="onSearchSubmit()"
-          placeholder="Buscar jogos..."
-          class="search-input"
-        />
-        
+        <input type="text" [(ngModel)]="searchQuery" (ngModelChange)="onSearchChange()" (keyup.enter)="onSearchSubmit()"
+          placeholder="Buscar jogos..." class="search-input" />
+
         <!-- Botão para submeter a busca -->
         <button class="search-button" (click)="onSearchSubmit()">Buscar</button>
-        
+
         <!-- Lista de sugestões de busca (visível apenas quando há resultados) -->
         <ul *ngIf="searchResults.length > 0" class="search-suggestions">
-          
+
           <!-- Loop para mostrar cada resultado de busca -->
           <li *ngFor="let game of searchResults">
-            
+
             <!-- Link para selecionar a sugestão -->
             <a (click)="selectSuggestion(game.name)">
               <!-- Nome do jogo como texto do link -->
@@ -72,27 +59,20 @@
           </li>
         </ul>
       </div>
-      
+
       <!-- Item de menu para informações do usuário -->
       <li class="custom-nav-item user-menu">
-        
+
         <!-- Link que mostra mensagem de boas-vindas com nome do usuário -->
         <a class="custom-nav-link active">Olá, {{ username }}</a>
-        
+
         <!-- Menu dropdown que aparece ao interagir com o item acima -->
         <div class="dropdown-menu">
-          
+
           <!-- Link para logout que chama método logout() -->
           <a (click)="logout()">Sair</a>
         </div>
       </li>
-      
-      <!-- Item de menu para página sobre -->
-      <li class="custom-nav-item">
-        <!-- Botão que chama método onTosobre() ao ser clicado -->
-        <button class="custom-nav-link active" (click)="onTosobre()">Sobre</button>
-      </li>
-      
       <!-- Item de menu para página de gêneros -->
       <li class="custom-nav-item">
         <!-- Botão que chama método onTogeneros() ao ser clicado -->
